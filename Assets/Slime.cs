@@ -24,7 +24,6 @@ public class Slime : MonoBehaviour
         health--;
         if (health<=0)
         {
-            Manager.Counter_kill++;
             Destroy(gameObject);
         }
     }
@@ -37,6 +36,7 @@ public class Slime : MonoBehaviour
     private void OnDestroy()
     {
         if (!this.gameObject.scene.isLoaded) return;
+        Manager.Counter_kill++;
         Instantiate(smoke_prefab, transform.position, transform.rotation);
         if (Random.Range(0,5)==1)
         {

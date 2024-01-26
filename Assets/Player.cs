@@ -29,22 +29,16 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject fireball_prefab;
     public static Vector3 player_pos;
     public float period = 0.0001f;
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 6)
-        {
-            isGround=true;
-        }
-    }
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "slime")
+        if (collision.gameObject.CompareTag("slime") )
         {
             Health -=(int) (collision.gameObject.transform.localScale.y*100);
             Debug.Log("גאמגא");
             if (Health<=0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
         }
         if (collision.gameObject.layer==7)
@@ -52,6 +46,10 @@ public class Player : MonoBehaviour
             Health += 10;
             Destroy(collision.gameObject);
             if (Health>100) { Health = 100; }
+        }
+        if (collision.gameObject.layer == 6)
+        {
+            isGround = true;
         }
     }
     void Start()
