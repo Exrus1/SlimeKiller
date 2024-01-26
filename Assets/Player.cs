@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     private KeyCode key_in_Corrutine;
     [SerializeField] private GameObject fireball_prefab;
     public static Vector3 player_pos;
-    public float period = 0.0001f;
+  
    
     private void OnCollisionEnter2D(Collision2D collision)
     {
